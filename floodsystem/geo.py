@@ -25,6 +25,15 @@ def stations_by_distance(stations, p):
       result.append((station.name, distance))
   return result
 
+def stations_within_radius(stations, centre, r):
+  station_distances = stations_by_distance(stations, centre)
+  result = []
+  for item in station_distances:
+    if item[1] < r:
+      result.append(item)
+  return result  
+
+
       
 
 
