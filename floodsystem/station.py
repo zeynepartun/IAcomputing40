@@ -18,7 +18,7 @@ class MonitoringStation:
 
         # Handle case of erroneous data where data system returns
         # '[label, label]' rather than 'label'
-        self.name = label
+        self.name = label   # ['hell','hell'] is a list  or 'hell' is string
         if isinstance(label, list):
             self.name = label[0]
 
@@ -28,6 +28,9 @@ class MonitoringStation:
         self.town = town
 
         self.latest_level = None
+    
+    def location(self):
+        return "River: {}   Town:  {}".format(self.river,self.town)
 
     def __repr__(self):
         d = "Station name:     {}\n".format(self.name)

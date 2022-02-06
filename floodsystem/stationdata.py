@@ -20,6 +20,10 @@ def build_station_list(use_cache=True):
 
     """
 
+    # e = {'town': 'London', 'riber':'xxx'}
+    # data['items'] = [{'town': 'London', 'riber':'xxx',
+    #    'stageScale':{'typicalRangeLow':"4", 'typicalRangeHigh':"10"}},{'town': 'Istanbu', 'riber':'xxx'}]
+
     # Fetch station data
     data = datafetcher.fetch_station_data(use_cache)
 
