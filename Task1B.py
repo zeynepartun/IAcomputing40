@@ -4,15 +4,17 @@ from floodsystem.stationdata import build_station_list
 from floodsystem.geo import stations_by_distance
 from floodsystem.utils import sorted_by_key
 
+
 def print_distance(item):
     print("Station Name: {}   Distance: {}".format(item[0], item[1]))
     
-
 def run():
     """Requirements for Task 1B"""
 
     # Build list of stations
     stations = build_station_list()
+
+
 
     # Print number of stations
     print("Number of stations: {}".format(len(stations)))
