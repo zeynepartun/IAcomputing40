@@ -7,6 +7,8 @@ for manipulating/modifying station data
 """
 
 
+from unittest import skip
+from sqlalchemy import false, true
 class MonitoringStation:
     """This class represents a river level monitoring station"""
 
@@ -43,17 +45,33 @@ class MonitoringStation:
         return d
 
     def typical_range_consistent(self):
-        
+        # if self.typical_range == None:
+        #     return False
+        # elif self.typical_range[0] < self.typical_range[1]:
+        #     return True
+        # else:
+        #     return False        
         if type(self.typical_range) != tuple:
-            data_valid = False
+                data_valid = False
         else:
             high =self.typical_range[1]
             low =self.typical_range[0]
-            if high < low:
-                data_valid= False
-            else:
-                data_valid =True
+        if high < low:
+            data_valid= False
+        else:
+            data_valid =True
         return data_valid
+
+    def relative_water_level(self):
+        if self.typical_range == None or self.latest_level == None:
+           skip
+        elif self.typical_range_consistent() == True:
+            # print(self.latest_level)
+            return (self.latest_level - self.typical_range[0])/(self.typical_range[1] - self.typical_range[0])
+        else:
+            return None 
+
+
 
 
 def inconsistent_typical_range_stations(stations):
@@ -62,4 +80,7 @@ def inconsistent_typical_range_stations(stations):
         if not station.typical_range_consistent(): 
             faulty_stations.append(station.name)
     return sorted (faulty_stations)
+
+
+
 

@@ -12,11 +12,11 @@ def test_stations_by_distance():
 
 
     assert len(list_test_1B) == len(stations)
-    # all stations
+    # shows all stations
     
     for x in range(len(list_test_1B)-1):
         assert (list_test_1B[x])[1] <= (list_test_1B[x+1])[1]
-    # ascending
+    # increasing order
  
 
     assert type(list_test_1B) == list
