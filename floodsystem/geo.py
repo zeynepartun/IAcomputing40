@@ -10,15 +10,12 @@ geographical data.
 from re import S
 
 from sqlalchemy import false, true
-from floodsystem.utils import sorted_by_key  # noqa
+from utils import sorted_by_key  # noqa
 
-from .station import MonitoringStation
+from station import MonitoringStation
 import math
 import haversine
 from haversine import haversine, Unit
-from sqlalchemy import true
-from audioloop import reverse
-from pytest import skip
 
 
 def stations_by_distance(stations, p):
