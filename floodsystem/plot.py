@@ -9,7 +9,8 @@ from .analysis import polyfit
 
 
 def plot_water_levels(station, dates, levels):
-    #print(dates)
+    if len(dates) != len(levels):
+        return None
     plt.plot(dates, levels)
 
 # Add axis labels, rotate date labels and add plot title
@@ -22,7 +23,7 @@ def plot_water_levels(station, dates, levels):
 
 
 # Display plot
-    plt.tight_layout()  # This makes sure plot does not cut off date labels
+    plt.tight_layout()  # so that the plot does not cut off the labels
 
     plt.show()
 

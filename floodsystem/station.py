@@ -20,7 +20,7 @@ class MonitoringStation:
 
         # Handle case of erroneous data where data system returns
         # '[label, label]' rather than 'label'
-        self.name = label   # ['hell','hell'] is a list  or 'hell' is string
+        self.name = label   
         if isinstance(label, list):
             self.name = label[0]
 
@@ -30,6 +30,9 @@ class MonitoringStation:
         self.town = town
 
         self.latest_level = None
+
+    def set_latest_level(self, level):
+        self.latest_level = level
     
     def location(self):
         return "River: {}   Town:  {}".format(self.river,self.town)
@@ -41,7 +44,8 @@ class MonitoringStation:
         d += "   coordinate:    {}\n".format(self.coord)
         d += "   town:          {}\n".format(self.town)
         d += "   river:         {}\n".format(self.river)
-        d += "   typical range: {}".format(self.typical_range)
+        d += "   typical range: {}\n".format(self.typical_range)
+        d += "   latest level:  {}".format(self.latest_level)
         return d
 
     def typical_range_consistent(self):
@@ -52,7 +56,7 @@ class MonitoringStation:
         # else:
         #     return False        
         if type(self.typical_range) != tuple:
-                data_valid = False
+            data_valid = False
         else:
             high =self.typical_range[1]
             low =self.typical_range[0]
