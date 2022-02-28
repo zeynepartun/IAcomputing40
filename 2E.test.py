@@ -46,11 +46,7 @@ def run():
     stations = get_test_stations()
     dates, levels = get_test_data()
     plot_water_levels(stations[0],dates,levels)
-
-
-
-
-
+    
 
 if __name__ == "__main__":
     print("*** Task 2E: CUED Part IA Flood Warning System ***")
