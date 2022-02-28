@@ -8,6 +8,7 @@ from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.stationdata import build_station_list
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.misc import derivative
 
 from turtle import color
 import matplotlib.pyplot as plt
@@ -20,6 +21,7 @@ def plot_water_levels(station, dates, levels):
 
     # print(dates)
     plt.plot(dates, levels)
+    deriv = dates.diff(levels)
 
     # Add axis labels, rotate date labels and add plot title
     plt.xlabel('dates')
@@ -49,4 +51,9 @@ def plot_water_level_with_fit(station, dates, levels, p):
     plt.tight_layout()
 
     plt.show()
+
+
+def derivitive_of_plot(x,y):
+    return derivative(function, x)
+
 

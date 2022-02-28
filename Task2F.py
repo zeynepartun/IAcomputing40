@@ -15,7 +15,6 @@ def run():
     dt=2
     p =4
     stations_N = (stations_highest_relative_level(stations, N))
-
     list=[]
     for i in stations_N:
         list.append(i[0])
@@ -30,7 +29,6 @@ def run():
             print(station.name, 'data error')
         else:
             plot_water_level_with_fit(station, dates, levels, p)
-            #print()
 if __name__ == "__main__":
     print("*** Task 2F: CUED Part IA Flood Warning System ***")
     run()
