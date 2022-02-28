@@ -53,6 +53,8 @@ def run():
     for item in list_2C:
         assert type(item[0]) == str
         assert type(item[1]) == float 
+    
+    print("test ran successfully")
 
 if __name__ == "__main__":
     print("*** Task 2C: CUED Part IA Flood Warning System ***")

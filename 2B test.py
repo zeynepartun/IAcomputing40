@@ -55,6 +55,8 @@ def run():
         assert type(item) == tuple
         assert type(item[0]) == str
         assert type(item[1]) == float
+
+    print("test ran successfully")
         
 run()   
     
