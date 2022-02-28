@@ -119,12 +119,12 @@ def fetch_measure_levels(measure_id, dt):
     # Start time for data
     start = now - dt
 
-    # Construct URL for fetching data
+    # Constructing URL for fetching data
     url_base = measure_id
     url_options = "/readings/?_sorted&since=" + start.isoformat() + 'Z'
     url = url_base + url_options
 
-    # Fetch data
+    # Fetching data
     data = fetch(url)
 
     # Extract dates and levels
@@ -132,8 +132,6 @@ def fetch_measure_levels(measure_id, dt):
     for measure in data['items']:
         # Convert date-time string to a datetime object
         d = dateutil.parser.parse(measure['dateTime'])
-
-        # Append data
         dates.append(d)
         levels.append(measure['value'])
 
