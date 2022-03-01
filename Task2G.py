@@ -30,18 +30,20 @@ def run():
         #else:
             #print(sorted_by_key(list, 1, reverse=True)[:N])
         station, deriv = (derivitive_of_plot(levels,dates,station))
-        if deriv != 0:
+        if len(dates) != 0:
             levl = (station.relative_water_level())
-            a=5
-            b=10000
+            a=1
+            b=1000
             risk = a*levl + b*deriv
             print(risk)
-            if risk>1:
-                print('red alert')
-            elif risk<-1:
-                print('no stress')
+            if risk>5:
+                print('severe')
+            elif risk>3:
+                print('high')
+            elif risk>-3:
+                print('moderate')
             else:
-                print('amber warning')
+                print('low')
                 
 if __name__ == "__main__":
     print("*** Task 2G: CUED Part IA Flood Warning System ***")
