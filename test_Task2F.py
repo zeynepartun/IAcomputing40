@@ -1,20 +1,49 @@
-from floodsystem.datafetcher import fetch_measure_levels
-from floodsystem.stationdata import build_station_list, update_water_levels
-from floodsystem.flood import stations_highest_relative_level
-from floodsystem.plot2 import *
-import datetime
+# from os import remove
 import matplotlib.pyplot as plt
-from floodsystem.flood import *
-import numpy as py
+# from pytest import skip
+from floodsystem.datafetcher import fetch_measure_levels
+from floodsystem.stationdata import build_station_list
+# from floodsystem.stationdata import build_station_list, update_water_levels
+from floodsystem.flood import stations_highest_relative_level
+from floodsystem.plot import plot_water_levels
+import numpy as np
+import random
+
+
+def get_test_stations():
+    station1 = MonitoringStation(
+        station_id=1,
+        measure_id=1,
+        label='Test station plot',
+        coord=(float(50), float(50)),
+        typical_range=(0, 1),
+        river='river plot',
+        town='town plot')
+
+    station1.set_latest_level(0.5)
+    return [station1]
+
+
+def get_test_data():
+    now = datetime.datetime.utcnow()
+    dt = 1
+    p=4
+    delta = datetime.timedelta(days=dt)
+    dates = []
+    levels = []
+    N=1
+    for i in range(0, 2):
+        dates.append(now - i * delta)
+        levels.append(random.random())
+    return dates, levels
 
 
 def run():
-    stations = build_station_list()
-    a=inconsistent_typical_range_stations(stations)
-    on(baseline_images=['line_dashes'], remove_text=True,
-                      extensions=['png'])
-    def test_line_dashes():
-        fig, ax = plt.subplots()
-        ax.plot(range(10), linestyle=(0, (3, 3)), lw=5)
-run()
-print ('test run succesful')
+    stations = get_test_stations()
+    dates, levels = get_test_data()
+    plot_water_levels_with_fit(stations[0], dates, levels, p)
+
+
+if __name__ == "__main__":
+    print("*** Task 2E: CUED Part IA Flood Warning System ***")
+    run()
