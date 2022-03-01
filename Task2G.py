@@ -42,12 +42,8 @@ def run():
                 print('no stress')
             else:
                 print('amber warning')
+                
 if __name__ == "__main__":
-<<<<<<< HEAD
-    print("*** Task 2F: CUED Part IA Flood Warning System ***")
-    run()
-=======
     print("*** Task 2G: CUED Part IA Flood Warning System ***")
     run()
 
->>>>>>> origin/main
