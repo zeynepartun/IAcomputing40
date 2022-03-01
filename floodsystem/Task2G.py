@@ -6,15 +6,16 @@ import datetime
 import matplotlib.pyplot as plt
 from floodsystem.flood import *
 import numpy as py
+from floodsystem.station import MonitoringStation
+
 
 def run():
     stations=build_station_list()
     update_water_levels(stations)
     N=6
-    dt=2
-    p =4
-    stations_N = (stations_highest_relative_level(stations, N))
+    stations_N = (stations_highest_relative_growth(stations, N))
     list=[]
+    listd=[]
     for i in stations_N:
         list.append(i[0])
     list_1 = []
@@ -23,20 +24,24 @@ def run():
             list_1.append(station)
 
     for station in list_1:
-        dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))
-        if len(dates) == 0:
-            print(station.name, 'data error')
-        else:
-            plot_water_level_with_fit(station, dates, levels, p)
-            print (derivitive_of_plot(x,y))
+        dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=2))
+        #if len(dates) == 0:
+            #print(station.name, 'data error')
+        #else:
+            #print(sorted_by_key(list, 1, reverse=True)[:N])
+        station, deriv = (derivitive_of_plot(levels,dates,station))
+        if deriv != 0:
+            levl = (station.relative_water_level())
+            a=5
+            b=10000
+            risk = a*levl + b*deriv
+            print(risk)
+            if risk>1:
+                print('red alert')
+            elif risk<-1:
+                print('no stress')
+            else:
+                print('amber warning')
 if __name__ == "__main__":
     print("*** Task 2F: CUED Part IA Flood Warning System ***")
     run()
-
-
-
-
-
-
-
-

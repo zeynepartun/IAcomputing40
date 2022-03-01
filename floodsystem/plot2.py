@@ -9,6 +9,8 @@ from floodsystem.stationdata import build_station_list
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.misc import derivative
+from numpy import diff
+
 
 from turtle import color
 import matplotlib.pyplot as plt
@@ -53,7 +55,13 @@ def plot_water_level_with_fit(station, dates, levels, p):
     plt.show()
 
 
-def derivitive_of_plot(x,y):
-    return derivative(function, x)
-
+def derivitive_of_plot(levels,dates,station):
+    if len(dates) != 0:
+        deltalevel=(levels[0]-levels[1])
+        deltatime=((dates[0]-dates[1]).total_seconds())/(60*15)
+        temp_tuple = (station, deltalevel/deltatime)
+        print(temp_tuple)
+        return temp_tuple
+    else:
+        return(station, 0)
 

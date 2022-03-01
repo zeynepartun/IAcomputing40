@@ -18,4 +18,13 @@ def stations_highest_relative_level(stations, N):
             skip
         else:
             list.append((i.name, i.relative_water_level()))
-    return sorted_by_key(list, 1, reverse=True)[:N]            
+    return sorted_by_key(list, 1, reverse=True)[:N]
+
+def stations_highest_relative_growth(stations, N):
+    list = []
+    for i in stations:
+        if i.relative_water_level() == None:
+            skip
+        else:
+            list.append((i.name, i.relative_water_level()))
+    return sorted_by_key(list, 1, reverse=True)[:N]
