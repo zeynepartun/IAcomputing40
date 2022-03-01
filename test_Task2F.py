@@ -1,3 +1,10 @@
+from this import d
+from floodsystem.station import *
+from floodsystem.flood import *
+from floodsystem.stationdata import *
+
+from dataclasses import replace
+import datetime
 # from os import remove
 import matplotlib.pyplot as plt
 # from pytest import skip
@@ -8,6 +15,14 @@ from floodsystem.flood import stations_highest_relative_level
 from floodsystem.plot import plot_water_levels
 import numpy as np
 import random
+from floodsystem.datafetcher import fetch_measure_levels
+from floodsystem.stationdata import build_station_list, update_water_levels
+from floodsystem.flood import stations_highest_relative_level
+from floodsystem.plot2 import *
+import datetime
+import matplotlib.pyplot as plt
+from floodsystem.flood import *
+import numpy as py
 
 
 def get_test_stations():
@@ -27,12 +42,10 @@ def get_test_stations():
 def get_test_data():
     now = datetime.datetime.utcnow()
     dt = 1
-    p=4
     delta = datetime.timedelta(days=dt)
     dates = []
     levels = []
-    N=1
-    for i in range(0, 2):
+    for i in range(0, 10):
         dates.append(now - i * delta)
         levels.append(random.random())
     return dates, levels
@@ -41,7 +54,7 @@ def get_test_data():
 def run():
     stations = get_test_stations()
     dates, levels = get_test_data()
-    plot_water_levels_with_fit(stations[0], dates, levels, p)
+    plot_water_level_with_fit(stations[0], dates, levels, 4)
 
 
 if __name__ == "__main__":
