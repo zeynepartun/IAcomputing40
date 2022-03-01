@@ -6,7 +6,6 @@ geographical data."""
 
 import haversine
 from haversine import haversine, Unit
-
 from floodsystem.station import MonitoringStation
 from floodsystem.utils import sorted_by_key  # noqa
 
