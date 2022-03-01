@@ -8,7 +8,7 @@ from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.stationdata import build_station_list
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.misc import derivative
+# from scipy.misc import derivative
 from numpy import diff
 
 
